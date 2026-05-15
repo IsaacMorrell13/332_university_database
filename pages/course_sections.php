@@ -1,11 +1,11 @@
 <?php
-include 'db.php';
+include '../db.php';
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <title>Course Sections</title>
 </head>
 <body>

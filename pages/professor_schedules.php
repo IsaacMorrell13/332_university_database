@@ -24,18 +24,15 @@ if (isset($_GET['ssn'])) {
 
     $ssn = $_GET['ssn'];
 
-    $sql = "
-        SELECT
-            C.title,
-            S.classroom,
-            S.meeting_days,
-            S.begin_time,
-            S.end_time
-        FROM Sections S
-        JOIN Courses C
-            ON S.course_no = C.course_no
-        WHERE S.professor_ssn = ?
-    ";
+    $sql = "SELECT C.title,
+                S.classroom,
+                S.meeting_days,
+                S.begin_time,
+                S.end_time
+            FROM Sections S
+            JOIN Courses C
+                ON S.course_no = C.course_no
+            WHERE S.professor_ssn = ?";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $ssn);

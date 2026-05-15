@@ -1,11 +1,11 @@
 <?php
-include 'db.php';
+include '../db.php';
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <title>Student Transcript</title>
 </head>
 <body>
@@ -25,16 +25,11 @@ if (isset($_GET['student_id'])) {
 
     $student_id = $_GET['student_id'];
 
-    $sql = "
-        SELECT
-            C.course_no,
-            C.title,
-            E.grade
-        FROM Enrollments E
-        JOIN Courses C
-            ON E.course_no = C.course_no
-        WHERE E.student_id = ?
-    ";
+    $sql = "SELECT C.course_no, C.title, E.grade
+                FROM Enrollments E
+            JOIN Courses C
+                ON  E.course_no = C.course_no
+            WHERE E.student_id = ?";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $student_id);

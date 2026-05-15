@@ -1,11 +1,11 @@
 <?php
-include 'db.php';
+include '../db.php';
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <title>Grade Report</title>
 </head>
 <body>
@@ -29,13 +29,11 @@ if (isset($_GET['course_no']) && isset($_GET['section_no'])) {
     $course_no = $_GET['course_no'];
     $section_no = $_GET['section_no'];
 
-    $sql = "
-        SELECT grade, COUNT(*) AS total
-        FROM Enrollments
-        WHERE course_no = ?
-        AND section_no = ?
-        GROUP BY grade
-    ";
+    $sql = "SELECT grade, COUNT(*) AS total
+                FROM Enrollments
+            WHERE course_no = ?
+            AND section_no = ?
+            GROUP BY grade";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("si", $course_no, $section_no);
