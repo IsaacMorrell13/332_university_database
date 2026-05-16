@@ -10,7 +10,7 @@ include 'db.php';
 </head>
 <body>
 
-<a href="../index.php">Home</a> > Course Sections
+<a href="../index.php">Home</a> > Professor Schedule
 <h1>Professor Schedule</h1>
 
 <form method="GET">
